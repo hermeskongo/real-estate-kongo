@@ -1112,11 +1112,3 @@ header {
     margin-bottom: 12%;
   }
 }
-@media only screen and (max-height: 650px) {
-  .caroussel {
-    height: 80%;
-  }
-  .caroussel > li {
-    height: 50%;
-  }
-}
