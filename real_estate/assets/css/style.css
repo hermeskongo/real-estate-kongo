@@ -19,7 +19,6 @@ ul {
 
 a {
   text-decoration: none;
-  color: white;
 }
 
 a:visited {
@@ -106,6 +105,7 @@ h3 {
   margin-inline: -15px;
   padding-inline: 15px;
   scroll-padding-left: 15px;
+  justify-content: space-between;
   padding-bottom: 60px;
   scroll-snap-type: inline mandatory;
 }
@@ -230,9 +230,10 @@ header {
   color: hsl(200deg, 15%, 43%);
   font-size: 0.875rem;
   font-weight: 600;
+  transition: 0.25s ease;
 }
-.navbar-bottom .navbar-list .nav-link:visited {
-  color: hsl(7deg, 56%, 91%);
+.navbar-bottom .navbar-list .nav-link:is(:hover, :focus) {
+  color: hsl(9deg, 100%, 62%);
 }
 
 .navbar-header-actions {
@@ -356,6 +357,10 @@ header {
   width: max-content;
   text-transform: uppercase;
   margin-left: 5px;
+  border: 0.02px solid transparent;
+}
+.about-content .btn:is(:hover, :focus) {
+  border: 0.02px solid hsl(9deg, 100%, 62%);
 }
 
 .about-text {
@@ -453,6 +458,8 @@ header {
 }
 .property-card .card-footer {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .property-card .card-banner img {
@@ -468,7 +475,7 @@ header {
 .card-banner {
   position: relative;
 }
-.card-banner .badge {
+.card-banner .badge-orange, .card-banner .badge-green {
   position: absolute;
   top: 8px;
   right: 8px;
@@ -477,10 +484,10 @@ header {
   width: max-content;
   text-transform: uppercase;
 }
-.card-banner .badge.green {
+.card-banner .badge-green {
   background-color: hsl(89deg, 72%, 45%);
 }
-.card-banner .badge.orange {
+.card-banner .badge-orange {
   background-color: hsl(9deg, 100%, 62%);
 }
 .card-banner .banner-actions {
@@ -629,6 +636,7 @@ header {
 }
 .aminities-item .card:is(:hover, :focus) {
   background-color: hsl(9deg, 100%, 62%);
+  cursor: pointer;
 }
 .aminities-item .card:is(:hover, :focus) .card-title {
   color: hsl(0deg, 0%, 100%);
@@ -857,6 +865,11 @@ header {
     max-width: unset;
     margin-inline: 25px;
   }
+  .property-card .card-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 12px;
+  }
   /* CTA */
   /* FOOTER */
   .footer-list {
@@ -941,12 +954,10 @@ header {
   }
   .blog .card {
     width: 90%;
+    max-width: 800px;
   }
 }
 @media only screen and (min-width: 992px) {
-  .container {
-    max-width: 970px;
-  }
   .home-content {
     width: unset;
     margin-bottom: 0;
@@ -1019,11 +1030,93 @@ header {
   }
   .footer-content {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   .footer-content .footer-main {
-    gap: 30px;
+    width: 750px;
+    gap: 80px;
   }
 }
-
-/*# sourceMappingURL=style.css.map */
+@media only screen and (min-width: 1250px) {
+  .container {
+    max-width: 100%;
+    padding: 0 50px;
+  }
+  .caroussel {
+    width: 100%;
+    padding-bottom: 15px;
+  }
+  .caroussel > li {
+    min-width: calc(60% - 20px);
+  }
+  /* HEADER */
+  .navbar-header-actions-btn:last-child,
+  .navbar-top {
+    display: none;
+  }
+  .logo {
+    margin-right: 10%;
+  }
+  .navbar-header-actions {
+    width: 450px;
+    transform: translateX(15%);
+  }
+  .navbar,
+  .navbar.active {
+    all: unset;
+  }
+  .header.active .header-bottom {
+    position: fixed;
+    bottom: auto;
+    top: -94px;
+    box-shadow: -2px 0px 30px hsla(237deg, 71%, 52%, 0.2);
+    animation: slidedown 0.25s ease-out forwards;
+  }
+  .header.active .header-bottom .logo {
+    margin-right: 8%;
+  }
+  .header-bottom {
+    z-index: 100;
+    background-color: hsl(0deg, 0%, 100%);
+  }
+  @keyframes slidedown {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+  .navbar-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 15px;
+  }
+  .navbar-list li a {
+    text-transform: capitalize;
+    color: hsl(188deg, 63%, 7%);
+    font-size: 1.125rem;
+  }
+  .navbar-list li a:is(:hover, :focus) {
+    color: hsl(9deg, 100%, 62%);
+  }
+  .header-bottom .container {
+    margin: 0 0 0 15px;
+    justify-content: space-between;
+  }
+  /* AMINITIES */
+  .aminities-item {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 12%;
+  }
+}
+@media only screen and (max-height: 650px) {
+  .caroussel {
+    height: 80%;
+  }
+  .caroussel > li {
+    height: 50%;
+  }
+}
