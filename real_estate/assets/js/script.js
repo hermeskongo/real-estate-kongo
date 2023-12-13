@@ -19,3 +19,8 @@ for(item of menuArr) {
         elementToggle(navbar, 'active')
     })
 }
+
+const header =  document.querySelector('.header')
+window.addEventListener('scroll', () => {
+    window.scrollY >= 280 ? header.classList.add('active') : header.classList.remove('active')
+})
