@@ -1,9 +1,9 @@
 $medium-1: 600px !default;
 $medium-2: 760px !default;
 $medium-3: 992px !default;
-$medium-4: 1200px !default;
+$medium-4: 1250px !default;
 
 $medium-up-1: "only screen and (min-width: #{$medium-1})";
 $medium-up-2: "only screen and (min-width: #{$medium-2})";
 $medium-up-3: "only screen and (min-width: #{$medium-3})";
-$medium-up-4: "only screen and (max-width: #{$medium-4})";
+$medium-up-4: "only screen and (min-width: #{$medium-4})";
