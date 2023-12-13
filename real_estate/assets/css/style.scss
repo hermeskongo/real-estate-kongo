@@ -1117,14 +1117,3 @@ header {
 
 
 }
-
-@media #{$height-up} {
-
-    .caroussel {
-        height: 80%;
-    }
-    .caroussel > li {
-        height: 50%;
-    }
-
-}
