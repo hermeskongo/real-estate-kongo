@@ -63,6 +63,7 @@ h3 {
     margin-inline: -15px;
     padding-inline: 15px;
     scroll-padding-left: 15px;
+    justify-content: space-between;
     padding-bottom: 60px;
     scroll-snap-type: inline mandatory;
 }
@@ -186,8 +187,9 @@ header {
         color: $cadet;
         font-size: $fs-5;
         font-weight: $fw-600;
+        transition: $transition;
     }
-    .navbar-list .nav-link:visited {color: $misty-rose;}
+    .navbar-list .nav-link:is(:hover, :focus) {color: $orange-soda;}
 }
 
 .navbar-header-actions {
@@ -305,6 +307,10 @@ header {
         width: max-content;
         text-transform: uppercase;
         margin-left: 5px;
+        border : .02px solid transparent;
+    }
+    .btn:is(:hover, :focus){
+        border : 0.02px solid $orange-soda;
     }
 }
 
@@ -401,6 +407,8 @@ header {
     overflow: hidden;
     .card-footer {
         display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 .property-card .card-banner img {
@@ -413,7 +421,7 @@ header {
 }
 .card-banner {
     position: relative;
-    .badge {
+    %badge {
         position: absolute;
         top: 8px;
         right: 8px;
@@ -422,10 +430,12 @@ header {
         width: max-content;
         text-transform: uppercase;
     }
-    .badge.green{
+    .badge-green{
+        @extend %badge;
         background-color: $yellow-green;
     }
-    .badge.orange{
+    .badge-orange{
+        @extend %badge;
         background-color: $orange-soda;
     }
     .banner-actions {
@@ -571,6 +581,7 @@ header {
     
     .card:is(:hover, :focus) {
         background-color: $orange-soda;
+        cursor: pointer;
     }
     .card:is(:hover, :focus) .card-title {
         color: $white;
@@ -798,7 +809,12 @@ header {
     /* PROPERTY */
     .property-card {
         max-width: unset;
-        margin-inline: 25px
+        margin-inline: 25px;
+        .card-footer {
+            flex-direction: row;
+            justify-content: space-between;
+            padding-inline: 12px;
+        }
     }
 
     /* CTA */
@@ -909,6 +925,7 @@ header {
         padding-left: 50px;
         .card {
             width: 90%;
+            max-width: 800px;
         }
     }
 
@@ -916,14 +933,16 @@ header {
         $fs-5: $fs-3;
     }
 }
+
 @media #{$medium-up-3} {
     body {
         $fs-1: 3.125rem;
-        $fs-4: 1.375rem;
-    }
-
-    .container {
-        max-width: 970px;
+        $fs-2: 2.875rem;
+        $fs-3: 2.5rem;
+        $fs-4: 2.375rem;
+        $fs-5: 1.875rem;
+        $fs-6: 1.813rem;
+        $fs-7: 1.75rem;
     }
 
     .home-content {
@@ -1002,9 +1021,110 @@ header {
 
     .footer-content {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         .footer-main {
-            gap: 30px;
+            width: 750px;
+            gap: 80px;
         }
     }
+}
+
+@media #{$medium-up-4} {
+
+    .container {
+        max-width: 100%;
+        padding: 0 50px;
+    }
+
+    .caroussel {
+        width: 100%;
+        padding-bottom: 15px;
+    }
+    .caroussel > li {
+        min-width: calc(60% - 20px);
+    }
+
+    /* HEADER */
+
+    .navbar-header-actions-btn:last-child,
+    .navbar-top {
+        display: none;
+    }
+
+    .logo {
+        margin-right: 10%;
+    }
+    
+    .navbar-header-actions{
+        width: 450px;
+        transform: translateX(15%);
+    }
+    
+    .navbar,
+    .navbar.active {
+        all: unset;
+    }
+    .header.active
+    .header-bottom {
+        position: fixed;
+        bottom: auto;
+        top: -94px;
+        box-shadow: $shadow-3;
+        animation: slidedown .25s ease-out forwards;
+        .logo {
+            margin-right: 8%;
+        }
+    }
+    .header-bottom {
+        z-index: 100;
+        background-color: $white;
+    }
+
+    @keyframes slidedown {
+        0% {transform: translateY(0);}
+        100% {transform: translateY(100%);}
+    }
+
+    .navbar-list {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-right: 15px;
+        li a{
+            text-transform: capitalize;
+            color: $dark-jungle-green;
+            font-size: $fs-4;
+        }
+    }
+    .navbar-list {
+        li a:is(:hover, :focus){
+            color: $orange-soda;
+        }
+    }
+
+    .header-bottom .container {
+        margin: 0 0 0 15px;
+        justify-content: space-between;
+    }
+
+    /* AMINITIES */
+
+    .aminities-item{
+        height: 100px;
+        width: 100px;
+        margin-bottom: 12%;
+    }
+
+
+}
+
+@media #{$height-up} {
+
+    .caroussel {
+        height: 80%;
+    }
+    .caroussel > li {
+        height: 50%;
+    }
+
 }
