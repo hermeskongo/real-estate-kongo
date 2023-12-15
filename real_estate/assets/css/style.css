@@ -45,10 +45,11 @@ button {
   text-align: left;
 }
 
-body {
+html, body {
   background: hsl(0deg, 0%, 100%);
   font-family: "Nunito Sans", sans-serif;
   overflow-x: hidden;
+  scroll-behavior: smooth;
   margin: 0;
 }
 
