@@ -5,9 +5,10 @@
 @import "libs/reset.scss";
 
 
-body {
+html, body {
     background: $white;
     font-family: $ff-nunito-sans;
+    scroll-behavior: smooth;
     overflow-x: hidden;
     margin: 0;
 }
